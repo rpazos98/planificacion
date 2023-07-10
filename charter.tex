@@ -12,12 +12,12 @@ codirector, % Uncomment to add a codirector to the title page
 % Nombre del posgrado, se usa en la carátula y se puede usar el cualquier lugar del documento con el comando \degreename
 %\posgrado{Carrera de Especialización en Sistemas Embebidos} 
 %\posgrado{Carrera de Especialización en Internet de las Cosas} 
-\posgrado{Carrera de Especialización en Intelegencia Artificial}
+\posgrado{Carrera de Especialización en Inteligencia Artificial}
 %\posgrado{Maestría en Sistemas Embebidos} 
 %\posgrado{Maestría en Internet de las cosas}
 
 % Tu nombre, se puede usar el cualquier lugar del documento con el comando \authorname
-\autor{Rodrigo Pazos} 
+\autor{Ingeniero Rodrigo Pazos} 
 
 % El nombre del director y co-director, se puede usar el cualquier lugar del documento con el comando \supname y \cosupname y \pertesupname y \pertecosupname
 \director{Nombre del Director}
@@ -92,7 +92,7 @@ Buenos Aires, \fechaInicioName
 
 \vspace{2cm}
 
-Por medio de la presente se acuerda con el Ing. \authorname\hspace{1px} que su Trabajo Final de la \degreename\hspace{1px} se titulará ``\ttitle'', consistirá esencialmente en la mejora de un sistema existente buscando mejorar su capacidad predictiva, y tendrá un presupuesto preliminar estimado de 600 h de trabajo, con fecha de inicio \fechaInicioName\hspace{1px} y fecha de presentación pública \fechaFinalName.
+Por medio de la presente se acuerda con el Ing. \authorname\hspace{1px} que su Trabajo Final de la \degreename\hspace{1px} se titulará ``\ttitle'', consistirá esencialmente en la mejora de un sistema existente para mejorar su capacidad predictiva, y tendrá un presupuesto preliminar estimado de 600 h de trabajo, con fecha de inicio \fechaInicioName\hspace{1px} y fecha de presentación pública \fechaFinalName.
 
 Se adjunta a esta acta la planificación inicial.
 
@@ -115,35 +115,34 @@ Se adjunta a esta acta la planificación inicial.
 
 Los sistemas de checkout autónomo han ganado popularidad en los últimos años al ofrecer soluciones eficientes para la operación de pequeños mercados. Estos sistemas automatizan tareas como la actualización del inventario y el cobro a los clientes. A través del uso de algoritmos que utilizan cámaras, balanzas y otros sensores, se generan los cobros y se mantienen actualizados los niveles de stock. El local se puede mantener de manera autónoma y para el cliente la experiencia es más fluida y rápida.
 
-En simultáneo, no existe casi bibliografía sobre el tema, ya que la investigación y desarrollo sobre el tema es de las compañías y no están interesadas en compartirlo.
+En simultáneo, no existe casi bibliografía sobre el tema, ya que la investigación y desarrollo sobre el tema es de las compañías (como Amazon y Standard Cognition) y no están interesadas en compartirlo.
 
 En 2020, AiFi organizó una competencia para la cual proporcionó un dataset de sensores y una serie de videos donde se simulaban situaciones de compra. El objetivo era implementar un sistema de checkout autónomo capaz de obtener resultados precisos para esos ejemplos. Se deduce por su funcionamiento que la arquitectura es como la presentada en la Figura \ref{fig:arqAifi}.
 
-Este dataset es de gran relevancia ya que es el único público y da una idea de cómo es que funciona un sistema de este tipo, algo que las otras empresas nunca explicaron en detalle. También lo es la solución del equipo ganador: hasta hoy es de los pocos trabajos públicos sobre este tema que cualquiera puede modificar y mejorar y es lo más parecido a una solución de código abierto del problema.
+Este dataset es de gran relevancia ya que es el único público y proporciona una idea de cómo es que funciona un sistema de este tipo, algo que las otras empresas nunca explicaron en detalle. También lo es la solución del equipo ganador de la competencia de AiFi: hasta hoy es de los pocos trabajos públicos sobre este tema que cualquiera puede modificar y mejorar y se asemeja a una solución de código abierto del problema.
 
 \begin{figure}[htpb]
 \centering 
 \includegraphics[width=1.05\textwidth]{./Figuras/Arquitectura TDG-Arch proposal.drawio.png}
-\caption{Diagrama de arquitectura a alto nivel de como funcionaría el sistema de AiFi}
+\caption{Diagrama de arquitectura a alto nivel de como funcionaría el sistema de AiFi.}
 \label{fig:arqAifi}
 \end{figure}
 
-El sistema está basado en eventos y en información tabular de los productos, su precio etc. Cuando un cliente termina su compra el módulo de Ticket Generation accede a la información asociada con ese cliente y genera el ticket correspondiente. 
+El sistema está basado en eventos y en información tabular de los productos, su precio, etc. Cuando un cliente termina su compra, el módulo de \textit{Ticket Generation} accede a la información asociada con ese cliente y genera el ticket correspondiente. 
 
-El equipo ganador de la competencia logró un F1 Score de 97.6\%, lo cual representa un muy buen desempeño. Sin embargo, se identificó que el sistema no resuelve de manera adecuada los casos extremos, donde se presentan escenarios con varios clientes simultáneos, clientes que mueven productos entre estantes o incluso clientes que dejan los productos fuera de los lugares designados. Estos casos extremos son relevantes, ya que en el uso diario de estos sistemas es más probable que los clientes actúen de manera impredecible o poco ordenada, en contraste con los casos ideales en los que el sistema funciona correctamente.
+El equipo ganador de la competencia logró un F1 Score de 97,6\%, lo que representa un muy buen desempeño. Sin embargo, se identificó que el sistema no resuelve de manera adecuada los casos extremos, donde se presentan escenarios con varios clientes simultáneos, clientes que mueven productos entre estantes o incluso clientes que dejan los productos fuera de los lugares designados. Estos casos extremos son relevantes, ya que en el uso diario de estos sistemas es más probable que los clientes actúen de manera impredecible o poco ordenada, en contraste con los casos ideales en los que el sistema funciona correctamente.
 
 El enfoque del equipo ganador se centró principalmente en el análisis estadístico de los datos de las balanzas en los estantes, pasando por alto el potencial de las técnicas de visión por computadora para mejorar la capacidad del sistema en los casos extremos.
 
-El desafío concreto del uso de cámaras es que los productos de venta minorista representan problemas para las arquitecturas más populares de visión por computadora, como por ejemplo:
+El desafío concreto en el uso de cámaras es que los productos de venta minorista representan problemas para las arquitecturas más populares de visión por computadora, como por ejemplo:
 \begin{itemize}
-	\item una gran dificultad a la hora de diferenciar la versión grande o la versión chica de un mismo producto, pudiendo representar pérdidas
-	\item un fino trabajo de mantenimiento del sistema a la hora de actualizar los productos disponibles
-	\item el tiempo de reentrenamiento, que depende del acceso a hardware de por sí costoso
-un proceso de validación del entrenamiento y reentrenamiento que puede tomar mucho tiempo y generar desconfianza por parte del dueño del local
+	\item Una gran dificultad a la hora de diferenciar la versión grande o la versión chica de un mismo producto, pudiendo representar pérdidas
+	\item Un fino trabajo de mantenimiento del sistema a la hora de actualizar los productos disponibles
+	\item El tiempo requerido para el reentrenamiento es un aspecto crítico, ya que puede depender del acceso a hardware costoso. Además, el proceso de validación y reentrenamiento puede ser prolongado, lo que puede generar desconfianza por parte del dueño del local.
 \end{itemize}
 Estos son algunos de los problemas no triviales que se deberán contemplar para que la mejora sea efectiva.
 
-El objetivo de este trabajo es mejorar la capacidad del sistema de checkout autónomo desarrollado por el equipo ganador de la competencia. La idea es poder mejorar la que es la única solución abierta para este problema y desarrollar la investigacion sobre el tema.
+El objetivo de este trabajo es mejorar la capacidad del sistema de checkout autónomo desarrollado por el equipo ganador de la competencia. La idea es poder optimizar y perfeccionar la única solución abierta disponible para abordar este problema. Además, se busca realizar una investigación sobre el tema, explorando nuevas perspectivas y enfoques.
 
 \section{2. Identificación y análisis de los interesados}
 \label{sec:interesados}
@@ -171,7 +170,7 @@ Orientador    & \supname	      & \pertesupname 	& Director Trabajo final \\ \hli
 \section{3. Propósito del proyecto}
 \label{sec:proposito}
 
-El propósito de este proyecto es avanzar el conocimiento sobre el uso de cámaras en sistemas de checkout autónomo, de forma de mejorar la única aproximación de código abierto disponible. En simultáneo se busca profundizar sobre las diferentes técnicas de visión de computadora y sobre cómo utilizarlas y combinarlas para lograr un predictor adecuado para este problema.
+El propósito de este proyecto es contribuir al avance del conocimiento en el uso de cámaras en sistemas de checkout autónomo, con el objetivo de mejorar la única aproximación de código abierto disponible. En simultáneo, se busca profundizar sobre las diferentes técnicas de visión de computadora y explorar cómo utilizarlas y combinarlas de manera efectiva para desarrollar un predictor adecuado para este problema específico.
 
 \section{4. Alcance del proyecto}
 \label{sec:alcance}
@@ -179,15 +178,15 @@ El propósito de este proyecto es avanzar el conocimiento sobre el uso de cámar
 El presente proyecto incluye:
 \begin{itemize}
 
-\item actualizar y refactorizar el código ya existente para mejorar su ergonomía y usabilidad
+\item Actualización y refactorización del código ya existente para mejorar su ergonomía y usabilidad.
 \item una investigación sobre las técnicas disponibles y sobre cómo utilizarlas y combinarlas para lograr un predictor adecuado para este problema
-\item una actualización pertinente de la documentación, para que sea fácil usar y expandir el proyecto, de forma que otros puedan construir sobre este
-\item implementar un predictor basado en los imágenes de video del dataset para resolver el problema presentado
+\item Una actualización pertinente de la documentación, para que sea fácil usar y expandir el proyecto, de forma que otros puedan construir sobre este.
+\item Implementación de un predictor basado en los imágenes de video del dataset para resolver el problema presentado.
 \end{itemize}
 
 El presente proyecto no incluye:
 \begin{itemize}
-\item una implementación concreta con la infraestructura que pueda usarse con el software desarrollado
+\item Una implementación concreta con la infraestructura que pueda usarse con el software desarrollado.
 \end{itemize}
 
 
@@ -197,8 +196,8 @@ El presente proyecto no incluye:
 Para el desarrollo del presente proyecto se supone que:
 
 \begin{itemize}
-	\item El dataset (videos y datos de los sensores) sigue completamente disponible
-	\item El proyecto ganador sigue disponible en Github
+	\item El dataset (videos y datos de los sensores) sigue completamente disponible.
+	\item El proyecto ganador sigue disponible en GitHub
 \end{itemize}
 
 
