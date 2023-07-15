@@ -7,7 +7,7 @@ codirector, % Uncomment to add a codirector to the title page
 
 
 % El títulos de la memoria, se usa en la carátula y se puede usar el cualquier lugar del documento con el comando \ttitle
-\titulo{Mejorando la precisión de un sistema de checkout autónomo mediante técnicas de visión por computadora} 
+\titulo{Uso de técnicas de visión por computadora para mejorar la precisión de un sistema autónomo de checkout} 
 
 % Nombre del posgrado, se usa en la carátula y se puede usar el cualquier lugar del documento con el comando \degreename
 %\posgrado{Carrera de Especialización en Sistemas Embebidos} 
@@ -17,10 +17,10 @@ codirector, % Uncomment to add a codirector to the title page
 %\posgrado{Maestría en Internet de las cosas}
 
 % Tu nombre, se puede usar el cualquier lugar del documento con el comando \authorname
-\autor{Ingeniero Rodrigo Pazos} 
+\autor{Ing. Rodrigo Pazos} 
 
 % El nombre del director y co-director, se puede usar el cualquier lugar del documento con el comando \supname y \cosupname y \pertesupname y \pertecosupname
-\director{Nombre del Director}
+\director{Ing. Maxim Dorogov}
 \pertenenciaDirector{FIUBA} 
 % FIXME:NO IMPLEMENTADO EL CODIRECTOR ni su pertenencia
 \codirector{John Doe} % para que aparezca en la portada se debe descomentar la opción codirector en el documentclass
@@ -70,6 +70,7 @@ codirector, % Uncomment to add a codirector to the title page
 Revisión & \multicolumn{1}{c|}{\cellcolor[HTML]{C0C0C0}Detalles de los cambios realizados} & Fecha      \\ \hline
 0      & Creación del documento                                 &\fechaInicioName \\ \hline
 1      & Se completa hasta el punto 5 inclusive                 & 4 de julio de 2023 \\ \hline
+2      & Se completa hasta el punto 9 inclusive.                & 11 de julio de 2023 \\ \hline
 %2      & Se completa hasta el punto 7 inclusive
 %		  Se puede agregar algo más \newline
 %		  En distintas líneas \newline
@@ -159,12 +160,20 @@ Rol           & Nombre y Apellido & Organización 	& Puesto 	\\ \hline
 Responsable   & \authorname       & FIUBA        	& Alumno 	\\ \hline
 %Colaboradores &                   &              	&        	\\ \hline
 Orientador    & \supname	      & \pertesupname 	& Director Trabajo final \\ \hline
+Cliente    & Locales minoristas que buscan incorporar checkout autónomo	      & - 	& - \\ \hline
+Usuario final   & Equipo de mantenimiento y desarrollo de locales que buscan incorporar checkout autónomo       & -        	& - 	\\ \hline
 %Equipo        & miembro1 \newline 
 				%miembro2          &              	&        	\\ \hline
 %Opositores    &                   &              	&        	\\ \hline
 %Usuario final &                   &              	&        	\\ \hline
 \end{tabularx}
 \end{table}
+
+\begin{itemize}
+
+\item \textbf{Cliente}: contempla todos los locales interesados en incorporar la tecnologia de checkout autonomo para mejorar sus procesos.
+\item \textbf{Usuario final}: En el equipo de desarrollo y mantenimiento técnico, se incluyen tanto los desarrolladores como los encargados de \textit{devops}. Estos profesionales requerirán herramientas y procesos ajustados a las necesidades del negocio para llevar a cabo eficientemente sus tareas.
+\end{itemize}
 
 
 \section{3. Propósito del proyecto}
@@ -197,112 +206,170 @@ Para el desarrollo del presente proyecto se supone que:
 
 \begin{itemize}
 	\item El dataset (videos y datos de los sensores) sigue completamente disponible.
-	\item El proyecto ganador sigue disponible en GitHub
+	\item El proyecto ganador sigue disponible en GitHub.
+	\item Los videos disponibles deben tener un formato procesable.
+	\item Debe existir un dataset que contenga imagenes de los productos que se observan en los videos para poder entrenar predictores
+	\item No deben haber inconsitencias en el dataset (falta de relación entre el los datos de sensores y lo que se observa en los vides, por ejemplo).
 \end{itemize}
 
 
 \section{6. Requerimientos}
 \label{sec:requerimientos}
 
-\begin{consigna}{red}
-Los requerimientos deben numerarse y de ser posible estar agruparlos por afinidad, por ejemplo:
-
 \begin{enumerate}
 	\item Requerimientos funcionales
 		\begin{enumerate}
-			\item El sistema debe...
-			\item Tal componente debe...
-			\item El usuario debe poder...
+			\item El sistema debe ser capaz de procesar videos de compras y extraer información relevante de las imágenes, incluyendo la detección de productos.
+			\item El sistema debe utilizar técnicas de visión por computadora para identificar con precisión los productos presentes en el video, incluso en casos de escenarios complejos con varios clientes, movimientos de productos entre estantes y productos fuera de los lugares designados.
+			\item El sistema debe ser capaz de distinguir entre diferentes versiones de un mismo producto, como versiones grandes o chicas, evitando confusiones y garantizando una identificación precisa.
+			\item El sistema debe mantener actualizado el inventario de productos a medida que se realizan las compras, registrando las cantidades vendidas y actualizando los niveles de stock en tiempo real.
+			\item El sistema debe generar un ticket de compra detallado y preciso, incluyendo los productos adquiridos, sus precios y el total a pagar por el cliente.
+			\item El sistema debe ser escalable y flexible, permitiendo la incorporación de nuevos productos
 		\end{enumerate}
-	\item Requerimientos de documentación
+	\item Requerimientos no funcionales
 		\begin{enumerate}
-			\item Requerimiento 1
-			\item Requerimiento 2 (prioridad menor)
+			\item El sistema debe lograr una precisión mínima del 96.7\% en la identificación de productos, igualando o superando la precisión alcanzada por el equipo ganador de la competencia de AiFi.
+			\item El sistema debe ser fácil de mantener y actualizar, con una estructura de código limpia y modular que facilite la incorporación de mejoras y la corrección de errores.
+			\item El sistema debe ser fácil de mantener y actualizar, con una estructura de código limpia y modular que facilite la incorporación de mejoras y la corrección de errores.
+			\item El sistema debe ser robusto y capaz de manejar diferentes tipos de productos, envases y etiquetas.
 		\end{enumerate}
-	\item Requerimiento de testing...
-	\item Requerimientos de la interfaz...
-	\item Requerimientos interoperabilidad...
-	\item etc...
+		\item Requerimientos de documentación
+		\begin{enumerate}
+			\item Se debe proporcionar un informe técnico que describa la arquitectura del sistema, incluyendo diagramas y explicaciones detalladas de los componentes, módulos y su interacción.
+			\item El proyecto debe contar con una documentación clara y detallada del código fuente, incluyendo comentarios, explicaciones de las funciones y métodos utilizados, y guías de uso de las diferentes partes del sistema
+			\item Se deben documentar las técnicas de visión por computadora utilizadas, incluyendo algoritmos, metodologías y herramientas específicas empleadas en el procesamiento de imágenes y la identificación de productos.
+			\item Se debe documentar el proceso de entrenamiento del modelo de visión por computadora, detallando el conjunto de datos utilizado, la preparación de los datos, los algoritmos de aprendizaje automático empleados y los resultados obtenidos.
+		\end{enumerate}
 \end{enumerate}
-
-Leyendo los requerimientos se debe poder interpretar cómo será el proyecto y su funcionalidad.
-
-Indicar claramente cuál es la prioridad entre los distintos requerimientos y si hay requerimientos opcionales. 
-
-No olvidarse de que los requerimientos incluyen a las regulaciones y normas vigentes!!!
-
-Y al escribirlos seguir las siguientes reglas:
-\begin{itemize}
-	\item Ser breve y conciso (nadie lee cosas largas). 
-	\item Ser específico: no dejar lugar a confusiones.
-	\item Expresar los requerimientos en términos que sean cuantificables y medibles.
-\end{itemize}
-
-\end{consigna}
 
 \section{7. Historias de usuarios (\textit{Product backlog})}
 \label{sec:backlog}
 
-\begin{consigna}{red}
-Descripción: En esta sección se deben incluir las historias de usuarios y su ponderación (\textit{history points}). Recordar que las historias de usuarios son descripciones cortas y simples de una característica contada desde la perspectiva de la persona que desea la nueva capacidad, generalmente un usuario o cliente del sistema. La ponderación es un número entero que representa el tamaño de la historia comparada con otras historias de similar tipo.
+Para la estimación de \textit{story points} se utilizara el siguiente esquema, basado en la complejidad y la difucultad de cada historia de usuario.
 
-El formato propuesto es: "como [rol] quiero [tal cosa] para [tal otra cosa]."
+\begin{table}[ht]
+\centering
+\caption{Tabla de Complejidad y Dificultad}
+\label{tab:tabla}
+\begin{tabular}{|c|c|}
+\hline
+\multicolumn{2}{|c|}{\textbf{Complejidad}} \\ \hline
+\textbf{Baja}   & 1                     \\ \hline
+\textbf{Media} & 3                     \\ \hline
+\textbf{Alta}  & 8                     \\ \hline
+\end{tabular}
+\quad
+\begin{tabular}{|c|c|}
+\hline
+\multicolumn{2}{|c|}{\textbf{Dificultad}} \\ \hline
+\textbf{Baja}   & 1                      \\ \hline
+\textbf{Media} & 2                      \\ \hline
+\textbf{Alta}  & 5                      \\ \hline
+\end{tabular}
+\end{table}
 
-Se debe indicar explícitamente el criterio para calcular los \textit{story points} de cada historia
-\end{consigna}
+\begin{table}[ht]
+\centering
+\caption{Tabla de asignación de Story Points}
+\label{tab:story-points}
+\begin{tabular}{|c|c|c|}
+\hline
+\textbf{Complejidad} & \textbf{Dificultad} & \textbf{Story Points} \\ \hline
+1                    & 1                   & 1                     \\ \hline
+1                    & 2                   & 2                     \\ \hline
+1                    & 5                   & 3                     \\ \hline
+3                    & 1                   & 3                     \\ \hline
+3                    & 2                   & 5                     \\ \hline
+3                    & 5                   & 8                     \\ \hline
+8                    & 1                   & 8                     \\ \hline
+8                    & 2                   & 13                    \\ \hline
+8                    & 5                   & 13                    \\ \hline
+\end{tabular}
+\end{table}
+
+\begin{itemize}
+	\item Como encargado del local, quiero que el sistema genere predicciones con muy alta precisión para mantener el stock actualizado y generar los cobros pertinentes.
+	\begin{itemize}
+	\item Complejidad: 1
+	\item Dificultad: 5
+	\item Story Points: 3
+	\end{itemize}
+	\item Como usuario, quiero que el sistema genere un ticket de compra detallado y preciso, incluyendo los productos adquiridos, sus precios y el total a pagar, para facilitar y garantizar un correcto proceso de cobro.
+	\begin{itemize}
+	\item Complejidad: 3
+	\item Dificultad: 5
+	\item Story Points: 8
+	\end{itemize}
+	\item Como encargado de mantener el sistema, quiero que el sistema sea fácil de mantener y actualizar, con una estructura de código modular y documentación clara, para facilitar las futuras mejoras y correcciones.
+	\begin{itemize}
+	\item Complejidad: 3
+	\item Dificultad: 2
+	\item Story Points: 5
+	\end{itemize}
+	\item Como encargado de mantener el sistema, quiero que el sistema sea escalable y flexible, permitiendo la incorporación de nuevos productos y la adaptación a diferentes configuraciones de cámaras y entornos de tienda, para que pueda crecer y adaptarse a mis necesidades cambiantes.
+	\begin{itemize}
+	\item Complejidad: 3
+	\item Dificultad: 5
+	\item Story Points: 8
+	\end{itemize}
+\end{itemize}
 
 \section{8. Entregables principales del proyecto}
 \label{sec:entregables}
 
-\begin{consigna}{red}
-
 Los entregables del proyecto son (ejemplo):
 
 \begin{itemize}
-	\item Manual de uso
-	\item Diagrama de circuitos esquemáticos
-	\item Código fuente del firmware
-	\item Diagrama de instalación
+	\item Manual de uso.
+	\begin{itemize}
+	\item Guía de instalación
+	\item Guía de integración
+	\item Diagrama de arquitectura
+	\item Detalles de la entrada y salida del sistema
+	\item Detalles de los modelos utilizados
+	\end{itemize}
+	\item Código fuente
+	\begin{itemize}
+	\item Código actualizado con la nueva funcionalidad de visión por computadora
+	\item Uno o más modelos de visión por computadora implementados
+	\end{itemize}
 	\item Informe final
-	\item etc...
 \end{itemize}
-
-\end{consigna}
 
 \section{9. Desglose del trabajo en tareas}
 \label{sec:wbs}
 
-\begin{consigna}{red}
-El WBS debe tener relación directa o indirecta con los requerimientos.  Son todas las actividades que se harán en el proyecto para dar cumplimiento a los requerimientos. Se recomienda mostrar el WBS mediante una lista indexada:
-
 \begin{enumerate}
-\item Grupo de tareas 1
+\item Investigación de técnicas de visión por computadora
 	\begin{enumerate}
-	\item Tarea 1 (tantas h)
-	\item Tarea 2 (tantas hs)
-	\item Tarea 3 (tantas h)
+	\item Investigar técnicas disponibles generalmente para la detección de productos (40 hs)
+	\item Investigar técnicas utilizadas por empresas de checkout autónomo para la detección de productos (30 hs)
+	\item Investigar técnicas que buscan resolver el problemas de deteccion de productos similares (40 hs)
+	\item Investigar técnicas que buscan reducir el tiempo de entrenamiento del modelo (40 hs)
+	\item Desarrollar un reporte de las técnicas investigadas y definir una o mas soluciones a probar e implementar (20 hs)
 	\end{enumerate}
-\item Grupo de tareas 2
+\item Implementar y probar las mejores soluciones 
 	\begin{enumerate}
-	\item Tarea 1 (tantas h)
-	\item Tarea 2 (tantas h)
-	\item Tarea 3 (tantas h)
+	\item Implementar las mejores soluciones (70 hs)
+	\item Realizar pruebas de las soluciones implementadas (70 hs)
+	\item Desarrollar un informe de las pruebas (20 hs)
 	\end{enumerate}
-\item Grupo de tareas 3
+\item Refactorización y limpieza del código 
 	\begin{enumerate}
-	\item Tarea 1 (tantas h)
-	\item Tarea 2 (tantas h)
-	\item Tarea 3 (tantas h)
-	\item Tarea 4 (tantas h)
-	\item Tarea 5 (tantas h)
+	\item Reconocer la estructura del código (40 hs)
+	\item Refactorizarlo de forma de mejorar la claridad y ergonomía (40 hs)
+	\item Implementar una interfaz para poder desarrollar varios modelos predictores de prodcutos que formen parte del nuevo proceso (20 h)
+	\item Integrar los predictores al código refactorizado (30 hs)
+	\end{enumerate}
+\item Documentación e informe final
+	\begin{enumerate}
+	\item Desarrollar manual de uso (50 hs)
+	\item Documentar código (40 hs)
+	\item Redactar el informe final (50 hs)
 	\end{enumerate}
 \end{enumerate}
 
-Cantidad total de horas: (tantas h)
-
-Se recomienda que no haya ninguna tarea que lleve más de 40 h. 
-
-\end{consigna}
+Cantidad total de horas: 600 hs
 
 \section{10. Diagrama de Activity On Node}
 \label{sec:AoN}
