@@ -1,6 +1,6 @@
 \documentclass[
 11pt, % The default document font size, options: 10pt, 11pt, 12pt
-codirector, % Uncomment to add a codirector to the title page
+%codirector, % Uncomment to add a codirector to the title page
 ]{charter} 
 
 
@@ -40,7 +40,7 @@ codirector, % Uncomment to add a codirector to the title page
  
 \fechaINICIO{20 de junio de 2023}		%Fecha de inicio de la cursada de GdP \fechaInicioName
 \fechaFINALPlan{15 de agosto de 2023} 	%Fecha de final de cursada de GdP
-\fechaFINALTrabajo{15 de mayo de 2022}	%Fecha de defensa pública del trabajo final
+\fechaFINALTrabajo{abril de 2024}	%Fecha de defensa pública del trabajo final
 
 
 \begin{document}
@@ -71,6 +71,8 @@ Revisión & \multicolumn{1}{c|}{\cellcolor[HTML]{C0C0C0}Detalles de los cambios 
 0      & Creación del documento                                 &\fechaInicioName \\ \hline
 1      & Se completa hasta el punto 5 inclusive                 & 4 de julio de 2023 \\ \hline
 2      & Se completa hasta el punto 9 inclusive.                & 11 de julio de 2023 \\ \hline
+3      & Se completa hasta el punto 12 inclusive.                & 25 de julio de 2023 \\ \hline
+4      & Se completa hasta el punto 15 inclusive.                & 1 de agosto de 2023 \\ \hline
 %2      & Se completa hasta el punto 7 inclusive
 %		  Se puede agregar algo más \newline
 %		  En distintas líneas \newline
@@ -93,7 +95,7 @@ Buenos Aires, \fechaInicioName
 
 \vspace{2cm}
 
-Por medio de la presente se acuerda con el Ing. \authorname\hspace{1px} que su Trabajo Final de la \degreename\hspace{1px} se titulará ``\ttitle'', consistirá esencialmente en la mejora de un sistema existente para mejorar su capacidad predictiva, y tendrá un presupuesto preliminar estimado de 600 h de trabajo, con fecha de inicio \fechaInicioName\hspace{1px} y fecha de presentación pública \fechaFinalName.
+Por medio de la presente se acuerda con el Ing. \authorname\hspace{1px} que su Trabajo Final de la \degreename\hspace{1px} se titulará ``\ttitle'', consistirá esencialmente en la mejora de un sistema existente para mejorar su capacidad predictiva, y tendrá un presupuesto preliminar estimado de 600 h de trabajo y \$ 4.074.000, con fecha de inicio \fechaInicioName\hspace{1px} y fecha de presentación pública \fechaFinalName.
 
 Se adjunta a esta acta la planificación inicial.
 
@@ -118,7 +120,7 @@ Los sistemas de checkout autónomo han ganado popularidad en los últimos años 
 
 En simultáneo, no existe casi bibliografía sobre el tema, ya que la investigación y desarrollo sobre el tema es de las compañías (como Amazon y Standard Cognition) y no están interesadas en compartirlo.
 
-En 2020, AiFi organizó una competencia para la cual proporcionó un dataset de sensores y una serie de videos donde se simulaban situaciones de compra. El objetivo era implementar un sistema de checkout autónomo capaz de obtener resultados precisos para esos ejemplos. Se deduce por su funcionamiento que la arquitectura es como la presentada en la Figura \ref{fig:arqAifi}.
+En 2020, AiFi organizó una competencia para la cual proporcionó un dataset de sensores y una serie de videos donde se simulaban situaciones de compra. El objetivo era implementar un sistema de checkout autónomo capaz de obtener resultados precisos para esos ejemplos. Se deduce por su funcionamiento que la arquitectura es como la presentada en la figura \ref{fig:arqAifi}.
 
 Este dataset es de gran relevancia ya que es el único público y proporciona una idea de cómo es que funciona un sistema de este tipo, algo que las otras empresas nunca explicaron en detalle. También lo es la solución del equipo ganador de la competencia de AiFi: hasta hoy es de los pocos trabajos públicos sobre este tema que cualquiera puede modificar y mejorar y se asemeja a una solución de código abierto del problema.
 
@@ -219,17 +221,16 @@ Para el desarrollo del presente proyecto se supone que:
 \begin{enumerate}
 	\item Requerimientos funcionales
 		\begin{enumerate}
-			\item El sistema debe ser capaz de procesar videos de compras y extraer información relevante de las imágenes, incluyendo la detección de productos.
+			\item El sistema debe ser capaz de procesar videos de compras en tiempo real y extraer información relevante de las imágenes, incluyendo la detección de productos. En este contexto tiempo real contempla una demora de hasta 5 minutos luego de finalizada la compra.
 			\item El sistema debe utilizar técnicas de visión por computadora para identificar con precisión los productos presentes en el video, incluso en casos de escenarios complejos con varios clientes, movimientos de productos entre estantes y productos fuera de los lugares designados.
-			\item El sistema debe ser capaz de distinguir entre diferentes versiones de un mismo producto, como versiones grandes o chicas, evitando confusiones y garantizando una identificación precisa.
+			\item El sistema debe ser capaz de distinguir entre diferentes versiones de un mismo producto, evitando confusiones y garantizando una identificación precisa.
 			\item El sistema debe mantener actualizado el inventario de productos a medida que se realizan las compras, registrando las cantidades vendidas y actualizando los niveles de stock en tiempo real.
 			\item El sistema debe generar un ticket de compra detallado y preciso, incluyendo los productos adquiridos, sus precios y el total a pagar por el cliente.
 			\item El sistema debe ser escalable y flexible, permitiendo la incorporación de nuevos productos
 		\end{enumerate}
 	\item Requerimientos no funcionales
 		\begin{enumerate}
-			\item El sistema debe lograr una precisión mínima del 96,7\% en la identificación de productos, igualando o superando la precisión alcanzada por el equipo ganador de la competencia de AiFi.
-			\item El sistema debe ser fácil de mantener y actualizar, con una estructura de código limpia y modular que facilite la incorporación de mejoras y la corrección de errores.
+		\item El sistema debe permitir la integración de nuevos modelos de forma sencilla.
 			\item El sistema debe ser fácil de mantener y actualizar, con una estructura de código limpia y modular que facilite la incorporación de mejoras y la corrección de errores.
 			\item El sistema debe ser robusto y capaz de manejar diferentes tipos de productos, envases y etiquetas.
 		\end{enumerate}
@@ -292,27 +293,27 @@ En función a la estimación de complejidad y dificultad se calculará el promed
 \begin{itemize}
 	\item Como encargado del local, quiero que el sistema genere predicciones con muy alta precisión para mantener el stock actualizado y generar los cobros pertinentes.
 	\begin{itemize}
-	\item Complejidad: 1
-	\item Dificultad: 5
-	\item Story Points: 3
+	\item Complejidad: 1.
+	\item Dificultad: 5.
+	\item Story Points: 3.
 	\end{itemize}
 	\item Como usuario, quiero que el sistema genere un ticket de compra detallado y preciso, incluyendo los productos adquiridos, sus precios y el total a pagar, para facilitar y garantizar un correcto proceso de cobro.
 	\begin{itemize}
-	\item Complejidad: 3
-	\item Dificultad: 5
-	\item Story Points: 5
+	\item Complejidad: 3.
+	\item Dificultad: 5.
+	\item Story Points: 5.
 	\end{itemize}
 	\item Como encargado de mantener el sistema, quiero que el sistema sea fácil de mantener y actualizar, con una estructura de código modular y documentación clara, para facilitar las futuras mejoras y correcciones.
 	\begin{itemize}
-	\item Complejidad: 3
-	\item Dificultad: 2
-	\item Story Points: 3
+	\item Complejidad: 3.
+	\item Dificultad: 2.
+	\item Story Points: 3.
 	\end{itemize}
 	\item Como encargado de mantener el sistema, quiero que el sistema sea escalable y flexible, permitiendo la incorporación de nuevos productos y la adaptación a diferentes configuraciones de cámaras y entornos de tienda, para que pueda crecer y adaptarse a mis necesidades cambiantes.
 	\begin{itemize}
-	\item Complejidad: 3
-	\item Dificultad: 5
-	\item Story Points: 5
+	\item Complejidad: 3.
+	\item Dificultad: 5.
+	\item Story Points: 5.
 	\end{itemize}
 \end{itemize}
 
@@ -342,42 +343,42 @@ Los entregables del proyecto son (ejemplo):
 \label{sec:wbs}
 
 \begin{enumerate}
-\item Investigación de técnicas de visión por computadora (150 h)
+\item Investigación de técnicas de visión por computadora. (150 h)
 	\begin{enumerate}
-		\item Investigar técnicas disponibles generalmente para la detección de productos (40 h)
-		\item Investigar técnicas utilizadas por empresas de checkout autónomo para la detección de productos (30 h)
-		\item Investigar técnicas que buscan resolver el problemas de deteccion de productos similares (40 h)
-		\item Investigar técnicas que buscan reducir el tiempo de entrenamiento del modelo (40 h)
+		\item Investigar técnicas disponibles generalmente para la detección de productos. (40 h)
+		\item Investigar técnicas utilizadas por empresas de checkout autónomo para la detección de productos. (30 h)
+		\item Investigar técnicas que buscan resolver el problemas de deteccion de productos similares. (40 h)
+		\item Investigar técnicas que buscan reducir el tiempo de entrenamiento del modelo. (40 h)
 	\end{enumerate}
-\item Implementar y probar las mejores soluciones (150 h)
+\item Implementar y probar las mejores soluciones. (150 h)
 	\begin{enumerate}
-	\item Implementar las mejores 3 soluciones (75 h)
+	\item Implementar las mejores 3 soluciones. (75 h)
 		\begin{enumerate}
-			\item Implementar la mejor solución (25 h)
-			\item Implementar la segunda mejor solución (25 h)
-			\item Implementar la tercera mejor solución (25 h)
+			\item Implementar la mejor solución. (25 h)
+			\item Implementar la segunda mejor solución. (25 h)
+			\item Implementar la tercera mejor solución. (25 h)
 		\end{enumerate}
-	\item Realizar pruebas de las soluciones implementadas (75 h)
+	\item Realizar pruebas de las soluciones implementadas. (75 h)
 		\begin{enumerate}
-			\item Realizar pruebas de la mejor solución (25 h)
-			\item Realizar pruebas de la segunda mejor solución (25 h)
-			\item Realizar pruebas de la tercera mejor solución (25 h)
+			\item Realizar pruebas de la mejor solución. (25 h)
+			\item Realizar pruebas de la segunda mejor solución. (25 h)
+			\item Realizar pruebas de la tercera mejor solución. (25 h)
 		\end{enumerate}
 	\end{enumerate}
-\item Refactorización y limpieza del código (140 h)
+\item Refactorización y limpieza del código. (140 h)
 		\begin{enumerate}
-			\item Reconocer la estructura del código (40 h)
-			\item Refactorizarlo de forma de mejorar la claridad y ergonomía (40 h)
-			\item Implementar una interfaz para poder desarrollar varios modelos predictores de productos que formen parte del nuevo proceso (30 h)
-			\item Integrar los predictores al código refactorizado (30 h)
+			\item Reconocer la estructura del código. (40 h).
+			\item Refactorizarlo de forma de mejorar la claridad y ergonomía. (40 h)
+			\item Implementar una interfaz para poder desarrollar varios modelos predictores de productos que formen parte del nuevo proceso. (30 h)
+			\item Integrar los predictores al código refactorizado. (30 h)
 		\end{enumerate}
-\item Documentación e informe final (160 h)
+\item Documentación e informe final. (160 h)
 \begin{enumerate}
-	\item Inicio elaboración memoria técnica - Taller de Trabajo Final A (100 h)
+	\item Inicio elaboración memoria técnica - Taller de Trabajo Final A. (100 h)
 		\begin{enumerate}
-			\item Desarrollar un reporte de las técnicas investigadas y definir al menos tres soluciones a probar e implementar (20 h)
-			\item Desarrollar un informe de las pruebas realizadas (20 h)
-			\item Documentación del código (20 h)
+			\item Desarrollar un reporte de las técnicas investigadas y definir al menos tres soluciones a probar e implementar. (20 h)
+			\item Desarrollar un informe de las pruebas realizadas. (20 h)
+			\item Documentación del código. (20 h)
 			\item Elaboración manuales de uso y reparación. (40 h)
 		\end{enumerate}
 	\item Revisión y correcciones de la memoria. (5 h)
@@ -393,97 +394,38 @@ Cantidad total de horas: 600 h
 \section{10. Diagrama de Activity On Node}
 \label{sec:AoN}
 
-\begin{consigna}{red}
-Armar el AoN a partir del WBS definido en la etapa anterior. 
-
-%La figura \ref{fig:AoN} fue elaborada con el paquete latex tikz y pueden consultar la siguiente referencia \textit{online}:
-
-%\url{https://www.overleaf.com/learn/latex/LaTeX_Graphics_using_TikZ:_A_Tutorial_for_Beginners_(Part_3)\%E2\%80\%94Creating_Flowcharts}
-
-\end{consigna}
 
 \begin{figure}[htpb]
 \centering 
-\includegraphics[width=.8\textwidth]{./Figuras/AoN.png}
+\includegraphics[width=.8\textwidth]{./aon.drawio.png}
 \caption{Diagrama de \textit{Activity on Node}.}
 \label{fig:AoN}
 \end{figure}
 
-Indicar claramente en qué unidades están expresados los tiempos.
-De ser necesario indicar los caminos semicríticos y analizar sus tiempos mediante un cuadro.
-Es recomendable usar colores y un cuadro indicativo describiendo qué representa cada color, como se muestra en el siguiente ejemplo:
-
-
-
-\section{11. Diagrama de Gantt}
-\label{sec:gantt}
-
-\begin{consigna}{red}
-
-Existen muchos programas y recursos \textit{online} para hacer diagramas de Gantt, entre los cuales destacamos:
-
+En la figura \ref{fig:AoN}, se observa el Activity on Node del proyecto. Caben destacar las siguientes referencias y aclaraciones:
 \begin{itemize}
-\item Planner
-\item GanttProject
-\item Trello + \textit{plugins}. En el siguiente link hay un tutorial oficial: \\ \url{https://blog.trello.com/es/diagrama-de-gantt-de-un-proyecto}
-\item Creately, herramienta online colaborativa. \\\url{https://creately.com/diagram/example/ieb3p3ml/LaTeX}
-\item Se puede hacer en latex con el paquete \textit{pgfgantt}\\ \url{http://ctan.dcc.uchile.cl/graphics/pgf/contrib/pgfgantt/pgfgantt.pdf}
+\item Cada nodo contiene una referencia a una tarea del WBS presentado en el punto anterior.
+\item Cada grupo de tareas fue agrupado por colores: lila para el trabajo de implementación, rojo para el trabajo relacionado a implementación y prueba de modelos, amarillo para el trabajo relacionado a la refactorización del código y naranja para el trabajo de documentación.
+\item Se detallan los caminos crítico y semicrítico, con su referencia correspondiente en la figura.
+\item El camino crítico del proyecto es de 360 horas. Es decir, que no podría terminarse antes de las 360 horas de trabajo.
 \end{itemize}
 
-Pegar acá una captura de pantalla del diagrama de Gantt, cuidando que la letra sea suficientemente grande como para ser legible. 
-Si el diagrama queda demasiado ancho, se puede pegar primero la ``tabla'' del Gantt y luego pegar la parte del diagrama de barras del diagrama de Gantt.
-
-Configurar el software para que en la parte de la tabla muestre los códigos del EDT (WBS).\\
-Configurar el software para que al lado de cada barra muestre el nombre de cada tarea.\\
-Revisar que la fecha de finalización coincida con lo indicado en el Acta Constitutiva.
-
-En la figura \ref{fig:gantt}, se muestra un ejemplo de diagrama de Gantt realizado con el paquete de \textit{pgfgantt}. En la plantilla pueden ver el código que lo genera y usarlo de base para construir el propio.
-
-\begin{figure}[htbp]
-\begin{center}
-\begin{ganttchart}{1}{12}
-  \gantttitle{2020}{12} \\
-  \gantttitlelist{1,...,12}{1} \\
-  \ganttgroup{Group 1}{1}{7} \\
-  \ganttbar{Task 1}{1}{2} \\
-  \ganttlinkedbar{Task 2}{3}{7} \ganttnewline
-  \ganttmilestone{Milestone o hito}{7} \ganttnewline
-  \ganttbar{Final Task}{8}{12}
-  \ganttlink{elem2}{elem3}
-  \ganttlink{elem3}{elem4}
-\end{ganttchart}
-\end{center}
-\caption{Diagrama de Gantt de ejemplo}
-\label{fig:gantt}
-\end{figure}
-
-
 \begin{landscape}
+\section{11. Diagrama de Gantt}
+\label{sec:gantt}
 \begin{figure}[htpb]
 \centering 
-\includegraphics[height=.85\textheight]{./Figuras/Gantt-2.png}
-\caption{Ejemplo de diagrama de Gantt rotado}
+\includegraphics[height=.63\textheight]{./gantt full.png}
+\caption{Diagrama de Gantt del proyecto}
 \label{fig:diagGantt}
 \end{figure}
-
+El diagrama de Gantt que se muestra en la figura \ref{fig:diagGantt} contempla 31 horas de trabajo semanal.
 \end{landscape}
-
-\end{consigna}
-
 
 \section{12. Presupuesto detallado del proyecto}
 \label{sec:presupuesto}
 
-\begin{consigna}{red}
-Si el proyecto es complejo entonces separarlo en partes:
-\begin{itemize}
-	\item Un total global, indicando el subtotal acumulado por cada una de las áreas.
-	\item El desglose detallado del subtotal de cada una de las áreas.
-\end{itemize}
-
-IMPORTANTE: No olvidarse de considerar los COSTOS INDIRECTOS.
-
-\end{consigna}
+La moneda utilizada para este presupuesto es el peso argentino.
 
 \begin{table}[htpb]
 \centering
@@ -496,14 +438,18 @@ Descripción &
   \multicolumn{1}{c|}{\cellcolor[HTML]{C0C0C0}Cantidad} &
   \multicolumn{1}{c|}{\cellcolor[HTML]{C0C0C0}Valor unitario} &
   \multicolumn{1}{c|}{\cellcolor[HTML]{C0C0C0}Valor total} \\ \hline
- &
-  \multicolumn{1}{c|}{} &
-  \multicolumn{1}{c|}{} &
-  \multicolumn{1}{c|}{} \\ \hline
- &
-  \multicolumn{1}{c|}{} &
-  \multicolumn{1}{c|}{} &
-  \multicolumn{1}{c|}{} \\ \hline
+ Horas de ingeniería & 
+  \multicolumn{1}{c|}{600 h} &
+  \multicolumn{1}{c|}{\$ 5.000 / h } &
+  \multicolumn{1}{c|}{\$ 3.000.000} \\ \hline
+ PC Laptop & 
+  \multicolumn{1}{c|}{600 h} &
+  \multicolumn{1}{c|}{\$ 530 / h } &
+  \multicolumn{1}{c|}{\$ 318.000} \\ \hline
+ PC con placa de video & 
+  \multicolumn{1}{c|}{600 h} &
+  \multicolumn{1}{c|}{\$ 1060 / h } &
+  \multicolumn{1}{c|}{\$ 636.000} \\ \hline
 \multicolumn{1}{|l|}{} &
    &
    &
@@ -513,7 +459,7 @@ Descripción &
    &
    \\ \hline
 \multicolumn{3}{|c|}{SUBTOTAL} &
-  \multicolumn{1}{c|}{} \\ \hline
+  \multicolumn{1}{c|}{\$3.954.000} \\ \hline
 \rowcolor[HTML]{C0C0C0} 
 \multicolumn{4}{|c|}{\cellcolor[HTML]{C0C0C0}COSTOS INDIRECTOS} \\ \hline
 \rowcolor[HTML]{C0C0C0} 
@@ -521,10 +467,10 @@ Descripción &
   \multicolumn{1}{c|}{\cellcolor[HTML]{C0C0C0}Cantidad} &
   \multicolumn{1}{c|}{\cellcolor[HTML]{C0C0C0}Valor unitario} &
   \multicolumn{1}{c|}{\cellcolor[HTML]{C0C0C0}Valor total} \\ \hline
-\multicolumn{1}{|l|}{} &
-   &
-   &
-   \\ \hline
+Espacio de coworking (individual) & 
+  \multicolumn{1}{c|}{6 meses} &
+  \multicolumn{1}{c|}{\$ 20.000 / mes } &
+  \multicolumn{1}{c|}{\$ 120.000} \\ \hline
 \multicolumn{1}{|l|}{} &
    &
    &
@@ -534,10 +480,10 @@ Descripción &
    &
    \\ \hline
 \multicolumn{3}{|c|}{SUBTOTAL} &
-  \multicolumn{1}{c|}{} \\ \hline
+  \multicolumn{1}{c|}{\$ 120.000} \\ \hline
 \rowcolor[HTML]{C0C0C0}
 \multicolumn{3}{|c|}{TOTAL} &
-   \\ \hline
+   \multicolumn{1}{c|}{\$ 4.074.000} \\ \hline
 \end{tabularx}%
 \end{table}
 
@@ -545,31 +491,38 @@ Descripción &
 \section{13. Gestión de riesgos}
 \label{sec:riesgos}
 
-\begin{consigna}{red}
-a) Identificación de los riesgos (al menos cinco) y estimación de sus consecuencias:
- 
-Riesgo 1: detallar el riesgo (riesgo es algo que si ocurre altera los planes previstos de forma negativa)
-\begin{itemize}
-	\item Severidad (S): mientras más severo, más alto es el número (usar números del 1 al 10).\\
-	Justificar el motivo por el cual se asigna determinado número de severidad (S).
-	\item Probabilidad de ocurrencia (O): mientras más probable, más alto es el número (usar del 1 al 10).\\
-	Justificar el motivo por el cual se asigna determinado número de (O). 
-\end{itemize}   
+A continuación se listan los riesgos identificados
 
-Riesgo 2:
 \begin{itemize}
-	\item Severidad (S): 
-	\item Ocurrencia (O):
+\item Riesgo 1: Que deje de estar disponible el dataset proporcionado por AiFi.
+\begin{itemize}
+\item Severidad (10): no se podría llevar adelante la parte más importante del trabajo. La solución sería cambiar de proyecto totalmente.
+\item Probabilidad (5): el dataset sigue disponible luego de 3 años. Puede ocurrir que sin previo aviso lo eliminen, pero al día de hoy no sucedió.
+\end{itemize}
+\item Riesgo 2: Que los tiempos de entrenamiento de modelos sean demasiado largos.
+\begin{itemize}
+\item Severidad (7): los modelos de visión por computadora suelen requerir mucho tiempo de entrenamiento. Este tiempo fue contemplado en la estimación pero puede que esa estimación no se ajuste a la realidad.
+\item Probabilidad (4): teniendo una PC con placa de video la probabilidad de que esto ocurra es relativamente baja, considerando el tamaño del dataset con el que se va a trabajar.
+\end{itemize}
+\item Riesgo 3: Que el dataset de productos disponibles no sea útil para el entrenamiento de modelos.
+\begin{itemize}
+\item Severidad (6): algunos modelos modernos necesitan mucha información para poder lograr soluciones efectivas. Si el dataset no es lo suficientemente grande, estos modelos no serían útiles.
+\item Probabilidad (3): existe un abanico de modelos lo suficientemente amplio como para que no todos las soluciones elegidas necesiten un dataset grande.
+\end{itemize}
+\item Riesgo 4: No encontrar información sobre los modelos/arquitecturas que usan las empresas de checkout autónomo hoy en día.
+\begin{itemize}
+\item Severidad (2): implica no tener información importante de empresas especializadas para seleccionar los soluciones a implementar. 
+\item Probabilidad (7): el activo mas importante de estas empresas es esta información, por lo que no es algo que suelen compartir. Al mismo tiempo muchas de estas empresas comparten sus investigaciones y avances para que su solución sea estandar y logren ser lideres del mercado.
+\end{itemize}
+\item Riesgo 5: Que el trabajo de refactorización sea demasiado extenso para lograr los objetivos de modularización y extensibilidad.
+\begin{itemize}
+\item Severidad (7): implicaría sumar horas dedicadas al grupo de refactorizacion. En el peor de los casos serían 40 horas mas de trabajo total.
+\item Probabilidad (2): el tiempo asignado a la refactorización se basó en la evaluacion del reponsable del equipo, que es ingeniero informático. Su evaluación sobre la calidad del código y el trabajo necesario para refactorizarlo tiene pocas posibilidades de no ser representativo.
+\end{itemize}
 \end{itemize}
 
-Riesgo 3:
-\begin{itemize}
-	\item Severidad (S): 
-	\item Ocurrencia (O):
-\end{itemize}
-
-
-b) Tabla de gestión de riesgos:      (El RPN se calcula como RPN=SxO)
+En base a lo desarrollado, se construye la tabla de gestión de riesgos. Se calcula el RPN como
+la multiplicación de la severidad y la probabilidad de ocurrencia.
 
 \begin{table}[htpb]
 \centering
@@ -577,34 +530,36 @@ b) Tabla de gestión de riesgos:      (El RPN se calcula como RPN=SxO)
 \hline
 \rowcolor[HTML]{C0C0C0} 
 Riesgo & S & O & RPN & S* & O* & RPN* \\ \hline
-       &   &   &     &    &    &      \\ \hline
-       &   &   &     &    &    &      \\ \hline
-       &   &   &     &    &    &      \\ \hline
-       &   &   &     &    &    &      \\ \hline
-       &   &   &     &    &    &      \\ \hline
+   1   &  10 & 5  &  50   &  0  &  5  &  0    \\ \hline
+   2   &  7 & 4  &   28  &  3  &  4  &   12   \\ \hline
+   3   &  6 & 3  &   18  &  2  &   4 &   8   \\ \hline
+   4   &  2 & 7 &   14 &    &    &      \\ \hline
+   5   &  7 & 2  &  14   &    &    &      \\ \hline
 \end{tabularx}%
 \end{table}
 
-Criterio adoptado: 
-Se tomarán medidas de mitigación en los riesgos cuyos números de RPN sean mayores a...
-
 Nota: los valores marcados con (*) en la tabla corresponden luego de haber aplicado la mitigación.
 
-c) Plan de mitigación de los riesgos que originalmente excedían el RPN máximo establecido:
- 
-Riesgo 1: plan de mitigación (si por el RPN fuera necesario elaborar un plan de mitigación).
-  Nueva asignación de S y O, con su respectiva justificación:
-  - Severidad (S): mientras más severo, más alto es el número (usar números del 1 al 10).
-          Justificar el motivo por el cual se asigna determinado número de severidad (S).
-  - Probabilidad de ocurrencia (O): mientras más probable, más alto es el número (usar del 1 al 10).
-          Justificar el motivo por el cual se asigna determinado número de (O).
+Criterio adoptado: 
+Se tomarán medidas de mitigación en los riesgos cuyos números de RPN sean mayores a 15
 
-Riesgo 2: plan de mitigación (si por el RPN fuera necesario elaborar un plan de mitigación).
- 
-Riesgo 3: plan de mitigación (si por el RPN fuera necesario elaborar un plan de mitigación).
-
-\end{consigna}
-
+\begin{itemize}
+\item Riesgo 1: desarrollar un \textit{backup} del dataset. Esta tarea no representa mucho tiempo y esfuerzo.
+\begin{itemize}
+\item Severidad (0): teniendo el \textit{backup} no representa ninguna severidad que el dataset deje de estar disponible en línea.
+\item Probabilidad (5): la probabilidad no cambia. 
+\end{itemize}}
+\item Riesgo 2: por cada uno de los modelos recomendados, desarrollar una lista de al menos dos modelos similares que requieran menos tiempo de entrenamiento.
+\begin{itemize}
+\item Severidad (3): con una lista de opciones es más fácil cambiar el trabajo sin perder tiempo y sin comprometer la aproximación original al problema. 
+\item Probabilidad (4): la probabilidad no cambia. 
+\end{itemize}
+\item Riesgo 3: si fuera necesario y dentro de lo disponible, extender el dataset con imágenes e informácion disponible en internet.
+\begin{itemize}
+\item Severidad (2): con la opción de extender el dataset si fuera necesario, el impacto del riesgo es mucho menor.
+\item Probabilidad (4): la probabilidad no cambia. 
+\end{itemize}
+\end{itemize}
 
 \section{14. Gestión de la calidad}
 \label{sec:calidad}
