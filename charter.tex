@@ -190,7 +190,7 @@ El presente proyecto incluye:
 \begin{itemize}
 
 \item Actualización y refactorización del código ya existente para mejorar su ergonomía y usabilidad.
-\item una investigación sobre las técnicas disponibles y sobre cómo utilizarlas y combinarlas para lograr un predictor adecuado para este problema
+\item una investigación sobre las técnicas disponibles y sobre cómo utilizarlas y combinarlas para lograr un predictor adecuado para este problema.
 \item Una actualización pertinente de la documentación, para que sea fácil usar y expandir el proyecto, de forma que otros puedan construir sobre este.
 \item Implementación de un predictor basado en los imágenes de video del dataset para resolver el problema presentado.
 \end{itemize}
@@ -219,7 +219,7 @@ Para el desarrollo del presente proyecto se supone que:
 \label{sec:requerimientos}
 
 \begin{enumerate}
-	\item Requerimientos funcionales
+	\item Requerimientos funcionales.
 		\begin{enumerate}
 			\item El sistema debe ser capaz de procesar videos de compras en tiempo real y extraer información relevante de las imágenes, incluyendo la detección de productos. En este contexto tiempo real contempla una demora de hasta 5 minutos luego de finalizada la compra.
 			\item El sistema debe utilizar técnicas de visión por computadora para identificar con precisión los productos presentes en el video, incluso en casos de escenarios complejos con varios clientes, movimientos de productos entre estantes y productos fuera de los lugares designados.
@@ -228,13 +228,13 @@ Para el desarrollo del presente proyecto se supone que:
 			\item El sistema debe generar un ticket de compra detallado y preciso, incluyendo los productos adquiridos, sus precios y el total a pagar por el cliente.
 			\item El sistema debe ser escalable y flexible, permitiendo la incorporación de nuevos productos
 		\end{enumerate}
-	\item Requerimientos no funcionales
+	\item Requerimientos no funcionales.
 		\begin{enumerate}
 		\item El sistema debe permitir la integración de nuevos modelos de forma sencilla.
 			\item El sistema debe ser fácil de mantener y actualizar, con una estructura de código limpia y modular que facilite la incorporación de mejoras y la corrección de errores.
 			\item El sistema debe ser robusto y capaz de manejar diferentes tipos de productos, envases y etiquetas.
 		\end{enumerate}
-		\item Requerimientos de documentación
+		\item Requerimientos de documentación.
 		\begin{enumerate}
 			\item Se debe proporcionar un informe técnico que describa la arquitectura del sistema, incluyendo diagramas y explicaciones detalladas de los componentes, módulos y su interacción.
 			\item El proyecto debe contar con una documentación clara y detallada del código fuente, incluyendo comentarios, explicaciones de las funciones y métodos utilizados, y guías de uso de las diferentes partes del sistema
@@ -491,7 +491,7 @@ Espacio de coworking (individual) &
 \section{13. Gestión de riesgos}
 \label{sec:riesgos}
 
-A continuación se listan los riesgos identificados
+A continuación se listan los riesgos identificados.
 
 \begin{itemize}
 \item Riesgo 1: Que deje de estar disponible el dataset proporcionado por AiFi.
@@ -512,7 +512,7 @@ A continuación se listan los riesgos identificados
 \item Riesgo 4: No encontrar información sobre los modelos/arquitecturas que usan las empresas de checkout autónomo hoy en día.
 \begin{itemize}
 \item Severidad (2): implicaría no contar con información valiosa, aunque no esencial, de empresas especializadas para seleccionar los soluciones a implementar. 
-\item Probabilidad (7): el activo más importante de estas empresas es esta información, por lo que no es algo que suelen compartir. Al mismo tiempo muchas de estas empresas comparten sus investigaciones y avances para que su solución sea estándar y logren ser líderes del mercado.
+\item Probabilidad (7): el activo más importante de estas empresas es esta información, por lo que no es algo que suelen compartir. Al mismo tiempo muchas de estas empresas comparten sus investigaciones y avances para que su solución sea estándar y lograr ser líderes del mercado.
 \end{itemize}
 \item Riesgo 5: Que el trabajo de refactorización sea demasiado extenso para lograr los objetivos de modularización y extensibilidad.
 \begin{itemize}
@@ -541,7 +541,7 @@ Riesgo & S & O & RPN & S* & O* & RPN* \\ \hline
 Nota: los valores marcados con (*) en la tabla corresponden luego de haber aplicado la mitigación.
 
 Criterio adoptado: 
-Se tomarán medidas de mitigación en los riesgos cuyos números de RPN sean mayores a 15
+Se tomarán medidas de mitigación en los riesgos cuyos números de RPN sean mayores a 15.
 
 \begin{itemize}
 \item Riesgo 1: desarrollar un \textit{backup} del dataset. Esta tarea no representa mucho tiempo y esfuerzo.
@@ -565,7 +565,9 @@ Se tomarán medidas de mitigación en los riesgos cuyos números de RPN sean may
 \label{sec:calidad}
 
 \begin{enumerate}
-			\item El sistema debe ser capaz de procesar videos de compras en tiempo real y extraer información relevante de las imágenes, incluyendo la detección de productos. En este contexto tiempo real contempla una demora de hasta 5 minutos luego de finalizada la compra.
+\item Requerimientos funcionales.
+\begin{enumerate}
+\item El sistema debe ser capaz de procesar videos de compras en tiempo real y extraer información relevante de las imágenes, incluyendo la detección de productos. En este contexto tiempo real contempla una demora de hasta 5 minutos luego de finalizada la compra.
 			\begin{itemize}
 	\item Verificación: realizar pruebas de verificación con el dataset original como entrada del sistema.
 	\item Validación: realizar pruebas controladas con el cliente en su local.   
@@ -595,17 +597,23 @@ Se tomarán medidas de mitigación en los riesgos cuyos números de RPN sean may
 	\item Verificación: una vez terminadas las primeras pruebas manuales de verificación, repetir las mismas pruebas con nuevos productos y el modelo actualizado para soportarlos.
 	\item Validación: una vez terminadas las primeras pruebas manuales de validación, repetir las mismas pruebas con nuevos productos y el modelo actualizado para soportarlos.  
 \end{itemize}
-		\item El sistema debe permitir la integración de nuevos modelos de forma sencilla.
+\end{enumerate}
+\item Requerimientos no funcionales.
+\begin{enumerate}
+\item El sistema debe permitir la integración de nuevos modelos de forma sencilla.
 		\begin{itemize}
-	\item Verificación: con la documentación necesaria para este proceso, conseguir voluntarios con perfiles similares a los encargados de mantenimiento del sistema y pedirles que sigan las instrucciones. 
-	\item Validación: con la documentación necesaria para este proceso, pedirles a las personas encargadas del mantenimiento que sigan las instrucciones.
+	\item Verificación: con la documentación necesaria para este proceso, conseguir voluntarios con perfiles similares a los encargados de mantenimiento del sistema y pedirles que sigan las instrucciones y evalúen su efectividad. 
+	\item Validación: con la documentación necesaria para este proceso, pedirles a las personas encargadas del mantenimiento que sigan las instrucciones y evalúen su efectividad.
 \end{itemize}
 			\item El sistema debe ser robusto y capaz de manejar diferentes tipos de productos, envases y etiquetas.	
 			\begin{itemize}
 		\item Verificación: una vez terminadas las primeras pruebas manuales de verificación, repetir las mismas pruebas con productos idénticos pero con diferentes envases y etiquetas.
 	\item Validación: una vez terminadas las primeras pruebas manuales de validación, repetir las mismas pruebas con productos idénticos pero con diferentes envases y etiquetas. 
 \end{itemize}	
-			\item Se debe proporcionar un informe técnico que describa la arquitectura del sistema, incluyendo diagramas y explicaciones detalladas de los componentes, módulos y su interacción.
+\end{enumerate}
+\item Requerimientos de documentación.
+\begin{enumerate}
+\item Se debe proporcionar un informe técnico que describa la arquitectura del sistema, incluyendo diagramas y explicaciones detalladas de los componentes, módulos y su interacción.
 			\begin{itemize}
 	\item Verificación: conseguir voluntarios con perfiles similares a los encargados de mantenimiento del sistema, pedirles que lean la documentación y que den una devolución sobre la misma, en función a su claridad y utilidad.
 	\item Validación: pedirles a los encargados de mantenimiento del sistema que lean la documentación y pedirles una devolución sobre la misma, en función a su claridad y utilidad.
@@ -616,6 +624,7 @@ Se tomarán medidas de mitigación en los riesgos cuyos números de RPN sean may
 	\item Validación: pedirles a los encargados de mantenimiento del sistema que lean la documentación y pedirles una devolución sobre la misma, en función a su claridad y utilidad.
 \end{itemize}
 \end{enumerate}
+\end{enumerate}
 
 \section{15. Procesos de cierre}    
 \label{sec:cierre}
@@ -623,20 +632,20 @@ Se tomarán medidas de mitigación en los riesgos cuyos números de RPN sean may
 \begin{itemize}
 \item Análisis de cumplimiento del plan de proyecto.
 \begin{itemize}
-\item Responsable: Rodrigo Pazos
+\item Responsable: Rodrigo Pazos.
 \item Actividades a realizar: comprobar fecha de finalización real del trabajo respecto
 a estimada en la planificación, contrastar horas invertidas en cada tarea, analizar
 porcentaje de requerimientos alcanzados correctamente y comprobar si el presupuesto
-anticipado fue preciso
+anticipado fue preciso.
 \end{itemize}
 \item Análisis de la efectividad de las técnicas utilizadas.
 \begin{itemize}
-\item Responsable: Rodrigo Pazos
+\item Responsable: Rodrigo Pazos.
 \item Actividades a realizar: presentar un resumen de las técnicas utilizadas en todos los grupos de trabajo, con sus resultados de calidad, problemas encontrados, soluciones aplicadas, una evaluación de qué tan eficientes fueron y recomendaciones de cómo se podrían conseguir mejores resultados, si fuera necesario. Comparar los riesgos analizados con los problemas encontrados y determinar si alguno de los problemas pudo haber sido considerado dentro de los riesgos del proyecto.
 \end{itemize}
-\item Acto de agradecimiento
+\item Acto de agradecimiento.
 \begin{itemize}
-\item Responsable: Rodrigo Pazos
+\item Responsable: Rodrigo Pazos.
 \item Actividades a realizar: al finalizar la defensa del trabajo, se agradecerá al director
 del proyecto, miembros del jurado, profesores y directivos de la carrera. Se destacarán aportes valiosos del director y profesores. 
 \end{itemize}
