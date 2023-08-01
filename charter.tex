@@ -442,11 +442,11 @@ Descripción &
   \multicolumn{1}{c|}{600 h} &
   \multicolumn{1}{c|}{\$ 5.000 / h } &
   \multicolumn{1}{c|}{\$ 3.000.000} \\ \hline
- PC Laptop & 
+ Alquiler PC Laptop & 
   \multicolumn{1}{c|}{600 h} &
   \multicolumn{1}{c|}{\$ 530 / h } &
   \multicolumn{1}{c|}{\$ 318.000} \\ \hline
- PC con placa de video & 
+ Alquiler PC con placa de video & 
   \multicolumn{1}{c|}{600 h} &
   \multicolumn{1}{c|}{\$ 1060 / h } &
   \multicolumn{1}{c|}{\$ 636.000} \\ \hline
@@ -511,13 +511,13 @@ A continuación se listan los riesgos identificados
 \end{itemize}
 \item Riesgo 4: No encontrar información sobre los modelos/arquitecturas que usan las empresas de checkout autónomo hoy en día.
 \begin{itemize}
-\item Severidad (2): implica no tener información importante de empresas especializadas para seleccionar los soluciones a implementar. 
-\item Probabilidad (7): el activo mas importante de estas empresas es esta información, por lo que no es algo que suelen compartir. Al mismo tiempo muchas de estas empresas comparten sus investigaciones y avances para que su solución sea estandar y logren ser lideres del mercado.
+\item Severidad (2): implicaría no contar con información valiosa, aunque no esencial, de empresas especializadas para seleccionar los soluciones a implementar. 
+\item Probabilidad (7): el activo más importante de estas empresas es esta información, por lo que no es algo que suelen compartir. Al mismo tiempo muchas de estas empresas comparten sus investigaciones y avances para que su solución sea estándar y logren ser líderes del mercado.
 \end{itemize}
 \item Riesgo 5: Que el trabajo de refactorización sea demasiado extenso para lograr los objetivos de modularización y extensibilidad.
 \begin{itemize}
-\item Severidad (7): implicaría sumar horas dedicadas al grupo de refactorizacion. En el peor de los casos serían 40 horas mas de trabajo total.
-\item Probabilidad (2): el tiempo asignado a la refactorización se basó en la evaluacion del reponsable del equipo, que es ingeniero informático. Su evaluación sobre la calidad del código y el trabajo necesario para refactorizarlo tiene pocas posibilidades de no ser representativo.
+\item Severidad (7): implicaría sumar horas dedicadas al grupo de refactorización. En el peor de los casos serían 40 horas más de trabajo total.
+\item Probabilidad (2): el tiempo asignado a la refactorización se basó en la evaluación del responsable del equipo, que es ingeniero informático. Su evaluación sobre la calidad del código y el trabajo necesario para refactorizarlo tiene pocas posibilidades de no ser representativo.
 \end{itemize}
 \end{itemize}
 
@@ -554,7 +554,7 @@ Se tomarán medidas de mitigación en los riesgos cuyos números de RPN sean may
 \item Severidad (3): con una lista de opciones es más fácil cambiar el trabajo sin perder tiempo y sin comprometer la aproximación original al problema. 
 \item Probabilidad (4): la probabilidad no cambia. 
 \end{itemize}
-\item Riesgo 3: si fuera necesario y dentro de lo disponible, extender el dataset con imágenes e informácion disponible en internet.
+\item Riesgo 3: si fuera necesario y dentro de lo disponible, extender el dataset con imágenes e información disponible en internet.
 \begin{itemize}
 \item Severidad (2): con la opción de extender el dataset si fuera necesario, el impacto del riesgo es mucho menor.
 \item Probabilidad (4): la probabilidad no cambia. 
@@ -564,39 +564,83 @@ Se tomarán medidas de mitigación en los riesgos cuyos números de RPN sean may
 \section{14. Gestión de la calidad}
 \label{sec:calidad}
 
-\begin{consigna}{red}
-Elija al menos diez requerientos que a su criterio sean los más importantes/críticos/que aportan más valor y para cada uno de ellos indique las acciones de verificación y validación que permitan asegurar su cumplimiento.
-
-\begin{itemize} 
-\item Req \#1: copiar acá el requerimiento.
-
-\begin{itemize}
-	\item Verificación para confirmar si se cumplió con lo requerido antes de mostrar el sistema al cliente. Detallar 
-	\item Validación con el cliente para confirmar que está de acuerdo en que se cumplió con lo requerido. Detallar  
+\begin{enumerate}
+			\item El sistema debe ser capaz de procesar videos de compras en tiempo real y extraer información relevante de las imágenes, incluyendo la detección de productos. En este contexto tiempo real contempla una demora de hasta 5 minutos luego de finalizada la compra.
+			\begin{itemize}
+	\item Verificación: realizar pruebas de verificación con el dataset original como entrada del sistema.
+	\item Validación: realizar pruebas controladas con el cliente en su local.   
 \end{itemize}
-
+			\item El sistema debe utilizar técnicas de visión por computadora para identificar con precisión los productos presentes en el video, incluso en casos de escenarios complejos con varios clientes, movimientos de productos entre estantes y productos fuera de los lugares designados.
+			\begin{itemize}
+		\item Verificación: realizar pruebas de verificación con el dataset original como entrada del sistema, particularmente con los escenarios con varios clientes, movimientos de productos entre estantes y productos fuera de los lugares designados.
+	\item Validación: realizar pruebas no controladas con el cliente en su local, con compradores reales.
 \end{itemize}
-
-Tener en cuenta que en este contexto se pueden mencionar simulaciones, cálculos, revisión de hojas de datos, consulta con expertos, mediciones, etc.  Las acciones de verificación suelen considerar al entregable como ``caja blanca'', es decir se conoce en profundidad su funcionamiento interno.  En cambio, las acciones de validación suelen considerar al entregable como ``caja negra'', es decir, que no se conocen los detalles de su funcionamiento interno.
-
-\end{consigna}
+			\item El sistema debe ser capaz de distinguir entre diferentes versiones de un mismo producto, evitando confusiones y garantizando una identificación precisa.
+			\begin{itemize}
+	\item Verificación: realizar pruebas manualmente con todos los productos que el sistema debería poder identificar.
+	\item Validación: realizar pruebas manualmente con todos los productos que el cliente necesita poder identificar.
+\end{itemize}
+			\item El sistema debe mantener actualizado el inventario de productos a medida que se realizan las compras, registrando las cantidades vendidas y actualizando los niveles de stock en tiempo real.
+			\begin{itemize}
+	\item Verificación: realizar pruebas de verificación con el dataset original como entrada del sistema.  
+	\item Validación: realizar pruebas controladas con el cliente en su local.  
+\end{itemize}
+			\item El sistema debe generar un ticket de compra detallado y preciso, incluyendo los productos adquiridos, sus precios y el total a pagar por el cliente.
+			\begin{itemize}
+	\item Verificación: realizar pruebas de verificación con el dataset original como entrada del sistema.  
+	\item Validación: realizar pruebas controladas con el cliente en su local.  
+\end{itemize}
+			\item El sistema debe ser escalable y flexible, permitiendo la incorporación de nuevos productos
+			\begin{itemize}
+	\item Verificación: una vez terminadas las primeras pruebas manuales de verificación, repetir las mismas pruebas con nuevos productos y el modelo actualizado para soportarlos.
+	\item Validación: una vez terminadas las primeras pruebas manuales de validación, repetir las mismas pruebas con nuevos productos y el modelo actualizado para soportarlos.  
+\end{itemize}
+		\item El sistema debe permitir la integración de nuevos modelos de forma sencilla.
+		\begin{itemize}
+	\item Verificación: con la documentación necesaria para este proceso, conseguir voluntarios con perfiles similares a los encargados de mantenimiento del sistema y pedirles que sigan las instrucciones. 
+	\item Validación: con la documentación necesaria para este proceso, pedirles a las personas encargadas del mantenimiento que sigan las instrucciones.
+\end{itemize}
+			\item El sistema debe ser robusto y capaz de manejar diferentes tipos de productos, envases y etiquetas.	
+			\begin{itemize}
+		\item Verificación: una vez terminadas las primeras pruebas manuales de verificación, repetir las mismas pruebas con productos idénticos pero con diferentes envases y etiquetas.
+	\item Validación: una vez terminadas las primeras pruebas manuales de validación, repetir las mismas pruebas con productos idénticos pero con diferentes envases y etiquetas. 
+\end{itemize}	
+			\item Se debe proporcionar un informe técnico que describa la arquitectura del sistema, incluyendo diagramas y explicaciones detalladas de los componentes, módulos y su interacción.
+			\begin{itemize}
+	\item Verificación: conseguir voluntarios con perfiles similares a los encargados de mantenimiento del sistema, pedirles que lean la documentación y que den una devolución sobre la misma, en función a su claridad y utilidad.
+	\item Validación: pedirles a los encargados de mantenimiento del sistema que lean la documentación y pedirles una devolución sobre la misma, en función a su claridad y utilidad.
+\end{itemize}
+			\item Se debe documentar el proceso de entrenamiento del modelo de visión por computadora, detallando el conjunto de datos utilizado, la preparación de los datos, los algoritmos de aprendizaje automático empleados y los resultados obtenidos.
+			\begin{itemize}
+	\item Verificación: conseguir voluntarios con perfiles similares a los encargados de mantenimiento del sistema, pedirles que lean la documentación y que den una devolución sobre la misma, en función a su claridad y utilidad.
+	\item Validación: pedirles a los encargados de mantenimiento del sistema que lean la documentación y pedirles una devolución sobre la misma, en función a su claridad y utilidad.
+\end{itemize}
+\end{enumerate}
 
 \section{15. Procesos de cierre}    
 \label{sec:cierre}
 
-\begin{consigna}{red}
-Establecer las pautas de trabajo para realizar una reunión final de evaluación del proyecto, tal que contemple las siguientes actividades:
-
 \begin{itemize}
-	\item Pautas de trabajo que se seguirán para analizar si se respetó el Plan de Proyecto original:
-	 - Indicar quién se ocupará de hacer esto y cuál será el procedimiento a aplicar. 
-	\item Identificación de las técnicas y procedimientos útiles e inútiles que se emplearon, y los problemas que surgieron y cómo se solucionaron:
-	 - Indicar quién se ocupará de hacer esto y cuál será el procedimiento para dejar registro.
-	\item Indicar quién organizará el acto de agradecimiento a todos los interesados, y en especial al equipo de trabajo y colaboradores:
-	  - Indicar esto y quién financiará los gastos correspondientes.
+\item Análisis de cumplimiento del plan de proyecto.
+\begin{itemize}
+\item Responsable: Rodrigo Pazos
+\item Actividades a realizar: comprobar fecha de finalización real del trabajo respecto
+a estimada en la planificación, contrastar horas invertidas en cada tarea, analizar
+porcentaje de requerimientos alcanzados correctamente y comprobar si el presupuesto
+anticipado fue preciso
 \end{itemize}
-
-\end{consigna}
+\item Análisis de la efectividad de las técnicas utilizadas.
+\begin{itemize}
+\item Responsable: Rodrigo Pazos
+\item Actividades a realizar: presentar un resumen de las técnicas utilizadas en todos los grupos de trabajo, con sus resultados de calidad, problemas encontrados, soluciones aplicadas, una evaluación de qué tan eficientes fueron y recomendaciones de cómo se podrían conseguir mejores resultados, si fuera necesario. Comparar los riesgos analizados con los problemas encontrados y determinar si alguno de los problemas pudo haber sido considerado dentro de los riesgos del proyecto.
+\end{itemize}
+\item Acto de agradecimiento
+\begin{itemize}
+\item Responsable: Rodrigo Pazos
+\item Actividades a realizar: al finalizar la defensa del trabajo, se agradecerá al director
+del proyecto, miembros del jurado, profesores y directivos de la carrera. Se destacarán aportes valiosos del director y profesores. 
+\end{itemize}
+\end{itemize}
 
 
 \end{document}
