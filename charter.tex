@@ -68,8 +68,8 @@
 \hline
 \rowcolor[HTML]{C0C0C0} 
 Revisión & \multicolumn{1}{c|}{\cellcolor[HTML]{C0C0C0}Detalles de los cambios realizados} & Fecha      \\ \hline
-0      & Creación del documento                                 &\fechaInicioName \\ \hline
-1      & Se completa hasta el punto 5 inclusive                 & 4 de julio de 2023 \\ \hline
+0      & Creación del documento.                                 &\fechaInicioName \\ \hline
+1      & Se completa hasta el punto 5 inclusive.                 & 4 de julio de 2023 \\ \hline
 2      & Se completa hasta el punto 9 inclusive.                & 11 de julio de 2023 \\ \hline
 3      & Se completa hasta el punto 12 inclusive.                & 25 de julio de 2023 \\ \hline
 4      & Se completa hasta el punto 15 inclusive.                & 1 de agosto de 2023 \\ \hline
@@ -174,7 +174,7 @@ Usuario final   & Equipo de mantenimiento y desarrollo de locales que buscan inc
 \begin{itemize}
 
 \item \textbf{Cliente}: contempla todos los locales interesados en incorporar la tecnologia de checkout autonomo para mejorar sus procesos.
-\item \textbf{Usuario final}: En el equipo de desarrollo y mantenimiento técnico, se incluyen tanto los desarrolladores como los encargados de \textit{devops}. Estos profesionales requerirán herramientas y procesos ajustados a las necesidades del negocio para llevar a cabo eficientemente sus tareas.
+\item \textbf{Usuario final}: en el equipo de desarrollo y mantenimiento técnico, se incluyen tanto los desarrolladores como los encargados de \textit{devops}. Estos profesionales requerirán herramientas y procesos ajustados a las necesidades del negocio para llevar a cabo eficientemente sus tareas.
 \end{itemize}
 
 
@@ -446,7 +446,7 @@ Descripción &
   \multicolumn{1}{c|}{600 h} &
   \multicolumn{1}{c|}{\$ 530 / h } &
   \multicolumn{1}{c|}{\$ 318.000} \\ \hline
- Alquiler PC con placa de video & 
+ Alquiler PC con placa de video dedicada & 
   \multicolumn{1}{c|}{600 h} &
   \multicolumn{1}{c|}{\$ 1060 / h } &
   \multicolumn{1}{c|}{\$ 636.000} \\ \hline
@@ -491,32 +491,32 @@ Espacio de coworking (individual) &
 \section{13. Gestión de riesgos}
 \label{sec:riesgos}
 
-A continuación se listan los riesgos identificados.
+A continuación se listan los riesgos identificados:
 
 \begin{itemize}
-\item Riesgo 1: Que deje de estar disponible el dataset proporcionado por AiFi.
+\item Riesgo 1: que deje de estar disponible el dataset proporcionado por AiFi.
 \begin{itemize}
 \item Severidad (10): no se podría llevar adelante la parte más importante del trabajo. La solución sería cambiar de proyecto totalmente.
 \item Probabilidad (5): el dataset sigue disponible luego de 3 años. Puede ocurrir que sin previo aviso lo eliminen, pero al día de hoy no sucedió.
 \end{itemize}
-\item Riesgo 2: Que los tiempos de entrenamiento de modelos sean demasiado largos.
+\item Riesgo 2: que los tiempos de entrenamiento de modelos sean demasiado largos.
 \begin{itemize}
 \item Severidad (7): los modelos de visión por computadora suelen requerir mucho tiempo de entrenamiento. Este tiempo fue contemplado en la estimación pero puede que esa estimación no se ajuste a la realidad.
-\item Probabilidad (4): teniendo una PC con placa de video la probabilidad de que esto ocurra es relativamente baja, considerando el tamaño del dataset con el que se va a trabajar.
+\item Probabilidad (4): teniendo una PC con placa de video dedicada (GTX 1660 Super) la probabilidad de que esto ocurra es relativamente baja, considerando el tamaño del dataset con el que se va a trabajar.
 \end{itemize}
-\item Riesgo 3: Que el dataset de productos disponibles no sea útil para el entrenamiento de modelos.
+\item Riesgo 3: que el dataset de productos disponibles no sea útil para el entrenamiento de modelos.
 \begin{itemize}
 \item Severidad (6): algunos modelos modernos necesitan mucha información para poder lograr soluciones efectivas. Si el dataset no es lo suficientemente grande, estos modelos no serían útiles.
 \item Probabilidad (3): existe un abanico de modelos lo suficientemente amplio como para que no todos las soluciones elegidas necesiten un dataset grande.
 \end{itemize}
-\item Riesgo 4: No encontrar información sobre los modelos/arquitecturas que usan las empresas de checkout autónomo hoy en día.
+\item Riesgo 4: no encontrar información sobre los modelos/arquitecturas que usan las empresas de checkout autónomo hoy en día.
 \begin{itemize}
 \item Severidad (2): implicaría no contar con información valiosa, aunque no esencial, de empresas especializadas para seleccionar los soluciones a implementar. 
-\item Probabilidad (7): el activo más importante de estas empresas es esta información, por lo que no es algo que suelen compartir. Al mismo tiempo muchas de estas empresas comparten sus investigaciones y avances para que su solución sea estándar y lograr ser líderes del mercado.
+\item Probabilidad (7): el activo más importante de estas empresas es esta información, por lo que no es algo que suelen compartir. Al mismo tiempo, muchas de estas empresas comparten sus investigaciones y avances para que su solución sea estándar y lograr ser líderes del mercado.
 \end{itemize}
-\item Riesgo 5: Que el trabajo de refactorización sea demasiado extenso para lograr los objetivos de modularización y extensibilidad.
+\item Riesgo 5: que el trabajo de refactorización sea demasiado extenso para lograr los objetivos de modularización y extensibilidad.
 \begin{itemize}
-\item Severidad (7): implicaría sumar horas dedicadas al grupo de refactorización. En el peor de los casos serían 40 horas más de trabajo total.
+\item Severidad (7): implicaría sumar horas dedicadas al grupo de refactorización. En el peor de los casos, serían 40 horas más de trabajo total.
 \item Probabilidad (2): el tiempo asignado a la refactorización se basó en la evaluación del responsable del equipo, que es ingeniero informático. Su evaluación sobre la calidad del código y el trabajo necesario para refactorizarlo tiene pocas posibilidades de no ser representativo.
 \end{itemize}
 \end{itemize}
@@ -530,7 +530,7 @@ la multiplicación de la severidad y la probabilidad de ocurrencia.
 \hline
 \rowcolor[HTML]{C0C0C0} 
 Riesgo & S & O & RPN & S* & O* & RPN* \\ \hline
-   1   &  10 & 5  &  50   &  0  &  5  &  0    \\ \hline
+   1   &  10 & 5  &  50   &  1  &  5  &  5    \\ \hline
    2   &  7 & 4  &   28  &  3  &  4  &   12   \\ \hline
    3   &  6 & 3  &   18  &  2  &   4 &   8   \\ \hline
    4   &  2 & 7 &   14 &    &    &      \\ \hline
@@ -546,7 +546,7 @@ Se tomarán medidas de mitigación en los riesgos cuyos números de RPN sean may
 \begin{itemize}
 \item Riesgo 1: desarrollar un \textit{backup} del dataset. Esta tarea no representa mucho tiempo y esfuerzo.
 \begin{itemize}
-\item Severidad (0): teniendo el \textit{backup} no representa ninguna severidad que el dataset deje de estar disponible en línea.
+\item Severidad (1): teniendo el \textit{backup}, representa una severidad baja que el dataset deje de estar disponible en línea.
 \item Probabilidad (5): la probabilidad no cambia. 
 \end{itemize}}
 \item Riesgo 2: por cada uno de los modelos recomendados, desarrollar una lista de al menos dos modelos similares que requieran menos tiempo de entrenamiento.
